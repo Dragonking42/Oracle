@@ -1,5 +1,6 @@
 {
   "name": "oracle-agent",
+  "description": "Oracle assistant runtime that loads the Barbara Gordon persona and coordinates with local MCP tools.",
   "version": "0.1.0",
   "private": true,
   "type": "commonjs",

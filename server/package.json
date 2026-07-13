@@ -1,5 +1,6 @@
 {
   "name": "oracle-server",
+  "description": "Oracle MCP server: vault, curator, chat endpoint, and tool registry for the Oracle workspace.",
   "version": "0.1.0",
   "private": true,
   "type": "commonjs",
