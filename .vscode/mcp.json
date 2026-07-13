@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "oracle": {
+      "type": "stdio",
+      "command": "npm",
+      "args": ["run", "mcp"],
+      "cwd": "${workspaceFolder}/server",
+      "dev": {
+        "watch": ["src/**/*.ts"]
+      }
+    }
+  }
+}

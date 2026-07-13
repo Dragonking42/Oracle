@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oracle Dashboard</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <header class="hero">
+      <p class="eyebrow">Oracle Control Surface</p>
+      <h1>Vault and Curator Operations</h1>
+      <p class="sub">Live view into notes, indexing health, and operating readiness.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Vault Notes</h2>
+          <button id="refreshNotes">Refresh</button>
+        </div>
+        <ul id="notesList" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Curator Reindex</h2>
+          <button id="runReindex">Run</button>
+        </div>
+        <pre id="reindexOutput" class="output">No report yet.</pre>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Semantic Search</h2>
+        </div>
+        <div class="search-row">
+          <input id="semanticQuery" type="text" placeholder="Search intent or concept..." />
+          <button id="runSemanticSearch">Query</button>
+        </div>
+        <ul id="semanticResults" class="list">
+          <li>Run a semantic search to see ranked notes.</li>
+        </ul>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Knowledge Graph</h2>
+          <div class="row-actions">
+            <button id="refreshGraph">Refresh</button>
+            <button id="exportGraph">Export JSON</button>
+          </div>
+        </div>
+        <div class="graph-filters">
+          <input id="graphFilterPrefix" type="text" placeholder="Path prefix (optional)" />
+          <input id="graphFilterMinDegree" type="number" min="0" value="0" placeholder="Min degree" />
+          <input id="graphFilterMinWeight" type="number" min="1" value="1" placeholder="Min edge weight" />
+          <label class="checkbox-inline">
+            <input id="graphFilterOrphansOnly" type="checkbox" />
+            Orphans only
+          </label>
+          <button id="applyGraphFilters">Apply Filters</button>
+        </div>
+        <div id="graphMap" class="graph-map">
+          <p class="graph-empty">Graph visualization will appear after refresh.</p>
+        </div>
+        <pre id="graphOutput" class="output">Graph not loaded yet.</pre>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Selected Note Detail</h2>
+          <button id="clearSelectedNote">Clear</button>
+        </div>
+        <pre id="noteDetailOutput" class="output">Click a graph node to inspect note content, backlinks, related notes, and git timeline.</pre>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Graph Diff</h2>
+          <button id="refreshGraphDiff">Refresh</button>
+        </div>
+        <pre id="graphDiffOutput" class="output">Graph diff not loaded yet.</pre>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>System & Performance</h2>
+          <button id="refreshSystemMetrics">Refresh</button>
+        </div>
+        <pre id="systemMetricsOutput" class="output">System metrics not loaded yet.</pre>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <h2>Vault Git History</h2>
+          <button id="refreshGitHistory">Refresh</button>
+        </div>
+        <pre id="gitHistoryOutput" class="output">Git history not loaded yet.</pre>
+      </section>
+
+      <section class="panel panel-wide">
+        <div class="panel-head">
+          <div class="barbara-head">
+            <h2>Barbara Chat</h2>
+            <span id="chatVersionTag" class="version-tag">v...</span>
+          </div>
+          <select id="chatThemeSelect" aria-label="Barbara chat theme">
+            <option value="classic">Classic Yellow + Black</option>
+            <option value="rebirth" selected>Rebirth Purple + Yellow</option>
+            <option value="animated">Animated Violet + Gold</option>
+          </select>
+        </div>
+        <div id="oracleChatMessages" class="chat-log" aria-live="polite">
+          <div class="chat-msg chat-msg-oracle">Barbara online. Ask for tactical guidance.</div>
+        </div>
+        <div class="chat-row">
+          <textarea
+            id="oracleChatInput"
+            rows="3"
+            placeholder="Ask Barbara Gordon (Oracle) about this project..."
+          ></textarea>
+          <button id="oracleChatSend">Send</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="/ui/app.js" defer></script>
+  </body>
+</html>
