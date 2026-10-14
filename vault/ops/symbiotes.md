@@ -9,23 +9,23 @@
 
 ## 1. Overview
 
-The VENOM-RAID ecosystem hosts two specialized, containerized autonomous symbiote agents guarding server infrastructure and physical perimeter networks. Both agents run locally in Docker on Unraid with GPU acceleration, custom dark/bioluminescent glassmorphism dashboards, and autonomous decision loops.
+The VENOM-RAID ecosystem hosts three specialized, containerized autonomous symbiote agents guarding server infrastructure, network perimeter, and technical estimating operations. All three agents run locally in Docker on Unraid with GPU acceleration, custom dark/bioluminescent glassmorphism dashboards, and autonomous decision loops.
 
 ```
-                     ┌──────────────────────────────────────────────┐
-                     │            VENOM-RAID (192.168.68.105)       │
-                     └──────┬────────────────────────────────┬──────┘
-                            │                                │
-             ┌──────────────┴──────────────┐  ┌──────────────┴──────────────┐
-             │   TOXIN (Port 8001)         │  │   LASHER (Port 8002)        │
-             │   Plex Media Guardian       │  │   Deco & Android Guardian   │
-             ├─────────────────────────────┤  ├─────────────────────────────┤
-             │ • Quadro P2000 (GPU 0)      │  │ • Quadro P2000 (GPU 1)      │
-             │ • Plex API + Tautulli       │  │ • Android ADB (Port 5555)   │
-             │ • Auto-tune Transcoder      │  │ • Deco BE25 Wi-Fi 7 Mesh    │
-             │ • Client Remediations       │  │ • 13 Ring Sentinels         │
-             │ • Discord / Pushover alerts │  │ • Host Presence Tracking    │
-             └─────────────────────────────┘  └─────────────────────────────┘
+                     ┌─────────────────────────────────────────────────────────────┐
+                     │                 VENOM-RAID (192.168.68.105)                 │
+                     └──────┬───────────────────────┬───────────────────────┬──────┘
+                            │                       │                       │
+             ┌──────────────┴──────────────┐ ┌──────┴──────────────┐ ┌──────┴──────────────┐
+             │   TOXIN (Port 8001)         │ │  LASHER (Port 8002) │ │   SCORN (Port 8003) │
+             │   Plex Media Guardian       │ │  Deco & Android     │ │   AgXcel Estimator  │
+             ├─────────────────────────────┤ ├─────────────────────┤ ├─────────────────────┤
+             │ • Quadro P2000 (GPU 0)      │ │ • Quadro P2000(GPU1)│ │ • NVIDIA Pair (LLM) │
+             │ • Plex API + Tautulli       │ │ • Android ADB 5555  │ │ • Fluid Dynamics    │
+             │ • Auto-tune Transcoder      │ │ • Deco BE25 Wi-Fi 7 │ │ • 4,589 Parts Cat.  │
+             │ • Client Remediations       │ │ • 13 Ring Sentinels │ │ • Codex Training    │
+             │ • Discord / Pushover alerts │ │ • Presence Tracking │ │ • Interactive BOM   │
+             └─────────────────────────────┘ └─────────────────────┘ └─────────────────────┘
 ```
 
 ---
@@ -74,14 +74,38 @@ The VENOM-RAID ecosystem hosts two specialized, containerized autonomous symbiot
 
 ---
 
-## 4. Operational Runbook
+## 4. Agent 3: SCORN (`Agent-Estimator-Scorn`)
+
+- **Role:** AgXcel Estimating Symbiote & Hydraulic Engineering Fabricator
+- **Persona:** Scorn (techno-organic symbiote, Carnage bloodline fused with Tanis Nieves' neural prosthetics; feeds on raw inquiries, dealer emails, and equipment specs).
+- **Web UI:** `http://192.168.68.105:8003`
+- **Docker Container:** `Agent-Estimator-Scorn` (host networking)
+- **GitHub Repository (Private):** [Dragonking42/Estimator-Assistant-Scorn](https://github.com/Dragonking42/Estimator-Assistant-Scorn)
+- **Primary Bindings:**
+  - **Hardware / Inference:** NVIDIA Pair local LLM API (`http://localhost:11434/v1`, `qwen2.5:14b-instruct`)
+  - **Storage Array:** `/mnt/user/appdata/scorn-estimator` mapped to `/data`
+  - **Master Inventory:** 4,589 authentic AgXcel parts catalog (`parts_db.json`)
+  - **Codex Memory:** Verified training estimates directory (`/data/training/`)
+- **Key Capabilities:**
+  - Neural text inquiry parser converting messy farmer/dealer notes into structured machine parameters.
+  - Mathematical fluid dynamics engine ($GPM = (rows \times spacing \times speed \times GPA) / 5940$), specific gravity calculations, 11-color microtubing bands, and 12 orifice disc pressure curves.
+  - 13-step authentic Bill of Materials (BOM) assembler.
+  - Interactive BOM manipulation: inline part number editing with catalog auto-query, quantity and price adjustment, custom line item insertion, and real-time total recalculation.
+  - Codex Training & Few-Shot Learning: One-click assimilation of verified and user-manipulated estimates into persistent memory to train the local LLM.
+
+---
+
+## 5. Operational Runbook
 
 | Action | Target | Command / Endpoint |
 | :--- | :--- | :--- |
 | Check Toxin State | VENOM-RAID | `curl -s http://127.0.0.1:8001/api/state` |
 | Check Lasher State | VENOM-RAID | `curl -s http://127.0.0.1:8002/api/state` |
+| Check Scorn Vitals | VENOM-RAID | `curl -s http://127.0.0.1:8003/vitals` |
 | Restart Toxin | VENOM-RAID | `docker restart Agent-Plex-Toxin` |
 | Restart Lasher | VENOM-RAID | `docker restart Agent-Deco-Lasher` |
+| Restart Scorn | VENOM-RAID | `docker restart Agent-Estimator-Scorn` |
 | View Android Screen | VENOM-RAID | `http://192.168.68.105:8002/api/screen` |
 | Toggle Toxin Autonomy | Toxin UI | `POST /mode` (`auto` / `suggest`) |
 | Toggle Lasher Autonomy| Lasher UI | `POST /mode` (`auto` / `suggest`) |
+| Export AgXcel Parts CSV| Scorn UI | `GET /api/inventory/export` |
